@@ -1,15 +1,15 @@
-<template>
-  <div>
-    Monitor
-  </div>
-</template>
+<!--<template>-->
+<!--  <div>-->
+<!--    Monitor-->
+<!--  </div>-->
+<!--</template>-->
 
-<script>
-  export default {
-    name: "Monitor"
-  }
-</script>
+<!--<script>-->
+<!--  export default {-->
+<!--    name: "Monitor"-->
+<!--  }-->
+<!--</script>-->
 
-<style scoped>
+<!--<style scoped>-->
 
-</style>
+<!--</style>-->

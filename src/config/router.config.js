@@ -1,4 +1,4 @@
-import { UserLayout, TabLayout, RouteView, BlankLayout, PageView } from '@/components/layouts'
+import { TabLayout, UserLayout } from '@/components/layouts'
 
 /**
  * 走菜单，走权限控制
@@ -288,7 +288,6 @@ export const asyncRouterMap = [
     path: '*', redirect: '/404', hidden: true
   }
 ]
-
 /**
  * 基础路由
  * @type { *[] }
@@ -306,6 +305,11 @@ export const constantRouterMap = [
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
       },
       {
+        path: 'faceLogin',
+        name: 'faceLogin',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/third/face.vue')
+      },
+      {
         path: 'register',
         name: 'register',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/register/Register')
@@ -319,54 +323,16 @@ export const constantRouterMap = [
         path: 'alteration',
         name: 'alteration',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/alteration/Alteration')
-      },
-    ]
-  },
-
-  // {
-  //   path: '/',
-  //   name: 'index',
-  //   component: TabLayout,
-  //   meta: {title: '首页'},
-  //   redirect: '/dashboard/workplace',
-  //   children: [
-  //     {
-  //       path: '/online',
-  //       name: 'online',
-  //       redirect: '/online',
-  //       component: RouteView,
-  //       meta: {title: '在线开发', icon: 'dashboard', permission: ['dashboard']},
-  //       children: [
-  //         {
-  //           path: '/online/auto/:code',
-  //           name: 'report',
-  //           component: () => import('@/views/modules/online/cgreport/OnlCgreportAutoList')
-  //         },
-  //       ]
-  //     },
-  //   ]
-  // },
-
-  {
-    path: '/test',
-    component: BlankLayout,
-    redirect: '/test/home',
-    children: [
-      {
-        path: 'home',
-        name: 'TestHome',
-        component: () => import('@/views/Home')
-      },
-      {
-        path: 'cesium',
-        name: 'cesium',
-        component: () => import('@/extends/cesium/CesiumDemo.vue')
       }
     ]
   },
   {
+    path: '/faceLogin',
+    component: () => import(/* webpackChunkName: "user" */ '@/views/user/third/face.vue'),
+    name: 'null'
+  },
+  {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
-  },
-
+  }
 ]

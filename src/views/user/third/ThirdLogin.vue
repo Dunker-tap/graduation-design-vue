@@ -5,7 +5,7 @@
       <a @click="onThirdLogin('github')" title="github">
         <a-icon class="item-icon" type="github"></a-icon>
       </a>
-      <a @click="onThirdLogin('wechat_enterprise')" title="人脸登录">
+      <a @click="onThirdLogin('face_verify')" title="人脸登录">
         <a-icon class="item-icon" type="robot"></a-icon>
       </a>
       <a @click="onThirdLogin('dingtalk')" title="钉钉">

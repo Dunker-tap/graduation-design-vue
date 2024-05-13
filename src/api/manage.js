@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { axios } from '@/utils/request'
-import { ACCESS_TOKEN } from "@/store/mutation-types"
+import { ACCESS_TOKEN } from '@/store/mutation-types'
+
 const api = {
   user: '/mock/api/user',
   role: '/mock/api/role',
@@ -12,50 +13,52 @@ const api = {
 export default api
 
 //post
-export function postAction(url,parameter) {
+export function postAction(url, parameter) {
   return axios({
     url: url,
-    method:'post' ,
+    method: 'post',
     data: parameter
   })
 }
 
 //post method= {post | put}
-export function httpAction(url,parameter,method) {
+export function httpAction(url, parameter, method) {
   return axios({
     url: url,
-    method:method ,
+    method: method,
     data: parameter
   })
 }
 
 //put
-export function putAction(url,parameter) {
+export function putAction(url, parameter) {
   return axios({
     url: url,
-    method:'put',
+    method: 'put',
     data: parameter
   })
 }
 
 //get
-export function getAction(url,parameter) {
+export function getAction(url, parameter) {
   return axios({
     url: url,
     method: 'get',
     params: parameter
   })
 }
+
 //post
-export function postFormAction(url,parameter) {
+export function postFormAction(url, parameter) {
   return axios({
     url: url,
-    method:'post' ,
+    method: 'post',
     params: parameter
   })
 }
+
 //deleteAction
-export function deleteAction(url,parameter) {
+export function deleteAction(url, parameter) {
   return axios({
     url: url,
     method: 'delete',
@@ -111,11 +114,11 @@ export function saveService(parameter) {
  * @param parameter
  * @returns {*}
  */
-export function downFile(url,parameter){
+export function downFile(url, parameter) {
   return axios({
     url: url,
     params: parameter,
-    method:'get' ,
+    method: 'get',
     responseType: 'blob'
   })
 }
@@ -155,14 +158,14 @@ export function downloadFile(url, fileName, parameter) {
  * @param parameter
  * @returns {*}
  */
-export function uploadAction(url,parameter){
+export function uploadAction(url, parameter) {
   return axios({
     url: url,
     data: parameter,
-    method:'post' ,
+    method: 'post',
     headers: {
-      'Content-Type': 'multipart/form-data',  // 文件上传
-    },
+      'Content-Type': 'multipart/form-data'  // 文件上传
+    }
   })
 }
 
@@ -172,22 +175,38 @@ export function uploadAction(url,parameter){
  * @param subStr
  * @returns {*}
  */
-export function getFileAccessHttpUrl(avatar,subStr) {
+export function getFileAccessHttpUrl(avatar, subStr) {
 
-  if(!subStr) subStr = 'http'
+  if (!subStr) subStr = 'http'
   try {
-    if(avatar && avatar.startsWith(subStr)){
-      return avatar;
-    }else{
-      if (window._CONFIG['BASE_FileType']=="mongodb"){
-        const token = Vue.ls.get(ACCESS_TOKEN);
-        return window._CONFIG['domianURL']+`/system/sysFile/opendownload?id=${avatar}&token=${token}`
+    if (avatar && avatar.startsWith(subStr)) {
+      return avatar
+    } else {
+      if (window._CONFIG['BASE_FileType'] == 'mongodb') {
+        const token = Vue.ls.get(ACCESS_TOKEN)
+        return window._CONFIG['domianURL'] + `/system/sysFile/opendownload?id=${avatar}&token=${token}`
       }
-      if(avatar &&　avatar.length>0 && avatar.indexOf('[')==-1){
-        return window._CONFIG['staticDomainURL'] + "/" + avatar;
+      if (avatar && avatar.length > 0 && avatar.indexOf('[') == -1) {
+        return window._CONFIG['staticDomainURL'] + '/' + avatar
       }
     }
-  }catch(err){
-   return;
+  } catch (err) {
+    return
   }
+}
+
+export function requestFaceAddress(url, parameter) {
+  return axios({
+    url: url,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function requestDeleteFace(url, parameter) {
+  return axios({
+    url: url,
+    method: 'delete',
+    params: parameter
+  })
 }

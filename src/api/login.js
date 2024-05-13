@@ -20,6 +20,14 @@ export function login(parameter) {
   })
 }
 
+export function faceLogin(parameter) {
+  return axios({
+    url: '/sys/faceLogin',
+    method: 'post',
+    data: parameter
+  })
+}
+
 export function phoneLogin(parameter) {
   return axios({
     url: '/sys/phoneLogin',
@@ -52,7 +60,7 @@ export function logout(logoutToken) {
     method: 'post',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
-      'X-Access-Token':  logoutToken
+      'X-Access-Token': logoutToken
     }
   })
 }
@@ -63,7 +71,7 @@ export function logout(logoutToken) {
  * @param thirdType
  * @returns {*}
  */
-export function thirdLogin(token,thirdType) {
+export function thirdLogin(token, thirdType) {
   return axios({
     url: `/sys/thirdLogin/getLoginUser/${token}/${thirdType}`,
     method: 'get',
